@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29905.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PermutationCipher", "PermutationCipher\PermutationCipher.csproj", "{5C1CF916-38F6-4C92-AFE9-35BA44FAEFF7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5C1CF916-38F6-4C92-AFE9-35BA44FAEFF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C1CF916-38F6-4C92-AFE9-35BA44FAEFF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C1CF916-38F6-4C92-AFE9-35BA44FAEFF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C1CF916-38F6-4C92-AFE9-35BA44FAEFF7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5660EED0-7B9A-4467-86FD-6D0AB6808C9F}
+	EndGlobalSection
+EndGlobal
