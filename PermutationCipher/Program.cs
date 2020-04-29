@@ -27,7 +27,14 @@ namespace PermutationCipher {
 
             var result = Permutate(code, inputString);
 
-            Console.WriteLine("Result:");
+            Console.WriteLine("Cryption result:");
+            Console.WriteLine(result);
+
+            result = Depermutate(code, inputString);
+
+            Console.WriteLine();
+
+            Console.WriteLine("Decryption result:");
             Console.WriteLine(result);
             Console.ReadKey();
 
@@ -63,6 +70,8 @@ namespace PermutationCipher {
                 codePositions[i] = code[i];
             }
 
+            codePositions.Unify();
+
             Array.Sort(codePositions, parts);
 
             string result = "";
@@ -74,5 +83,81 @@ namespace PermutationCipher {
             return result.Trim();
         }
 
+        public static string Depermutate(string code, string inputString) {
+
+            var splitted = inputString.Split(' ').Where((i) => {
+                return i != "";
+            }).ToList();
+
+            var matrixWidth = code.Length;
+            var matrixHeight = splitted.Max(item => item.Length);
+
+            permutationMatrix = new char[matrixWidth, matrixHeight];
+
+            codePositions = new int[code.Length];
+
+            for (int i = 0; i < code.Length; i++) {
+                codePositions[i] = code[i];
+            }
+
+            codePositions.Unify();
+
+            int min;
+            int minPos;
+
+            for (int i = 0; i < splitted.Count; i++) {
+                min = codePositions[0];
+                minPos = 0;
+                for (int j = 0; j < codePositions.Length; j++) {
+                    if (codePositions[j] < min) {
+                        min = codePositions[j];
+                        minPos = j;
+                    }
+                }
+
+                for (int j = 0; j < splitted[i].Length; j++) {
+                    permutationMatrix[minPos, j] = splitted[i][j];
+                }
+
+                codePositions[minPos] = int.MaxValue;
+            }
+
+            var result = "";
+
+            for (int i = 0; i < permutationMatrix.GetLength(1); i++) {
+                for (int j = 0; j < permutationMatrix.GetLength(0); j++) {
+                    result += permutationMatrix[j, i];
+                }
+            }
+
+            return result;
+
+        }
+
     }
+
+    public static class Extensions {
+
+        /// <summary>
+        /// Метод унификации ключей. Нужен для правильной расшифровки
+        /// </summary>
+        /// <param name="values">Значения массива ключей</param>
+        public static void Unify(this int[] values) {
+
+            int counter;
+
+            for (int i = 0; i < values.Length - 1; i++) {
+                counter = 0;
+                for (int j = i + 1; j < values.Length; j++) {
+                    if (values[i] == values[j]) {
+                        values[j] += ++counter;
+                    }
+                }
+            }
+
+        }
+
+    }
+
+
 }
